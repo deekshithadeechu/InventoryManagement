@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.inventory.controller.ReportsController"
+      spacing="25" styleClass="page-content">
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <VBox>
+            <Label text="Reports" styleClass="page-title"/>
+            <Label text="Generate and export inventory reports" styleClass="page-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+    
+    <!-- Quick Actions -->
+    <HBox spacing="15" styleClass="quick-actions">
+        <Button text="📄 Quick PDF Export" onAction="#handleQuickPdf" styleClass="action-card"/>
+        <Button text="📊 Quick CSV Export" onAction="#handleQuickCsv" styleClass="action-card"/>
+    </HBox>
+    
+    <!-- Report Configuration -->
+    <VBox styleClass="dashboard-card" spacing="20">
+        <Label text="Generate Custom Report" styleClass="card-title"/>
+        
+        <HBox spacing="20">
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Report Type" styleClass="input-label"/>
+                <ComboBox fx:id="reportTypeCombo" maxWidth="Infinity"/>
+            </VBox>
+            
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Export Format" styleClass="input-label"/>
+                <ComboBox fx:id="formatCombo" maxWidth="Infinity"/>
+            </VBox>
+        </HBox>
+        
+        <HBox spacing="20">
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Start Date" styleClass="input-label"/>
+                <DatePicker fx:id="startDatePicker" maxWidth="Infinity"/>
+            </VBox>
+            
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="End Date" styleClass="input-label"/>
+                <DatePicker fx:id="endDatePicker" maxWidth="Infinity"/>
+            </VBox>
+        </HBox>
+        
+        <HBox spacing="20">
+            <CheckBox fx:id="includeExpiredCheck" text="Include expired products"/>
+            <CheckBox fx:id="includeLowStockCheck" text="Include low stock only"/>
+        </HBox>
+        
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Button fx:id="generateButton" text="📥 Generate Report" onAction="#handleGenerate"
+                    styleClass="primary-button"/>
+            <ProgressIndicator fx:id="loadingIndicator" visible="false" maxHeight="24"/>
+            <Label fx:id="statusLabel" styleClass="status-label"/>
+        </HBox>
+    </VBox>
+    
+    <!-- Report Templates -->
+    <VBox styleClass="dashboard-card" spacing="15">
+        <Label text="Report Templates" styleClass="card-title"/>
+        
+        <HBox spacing="15">
+            <VBox styleClass="template-card" HBox.hgrow="ALWAYS">
+                <Label text="📦" styleClass="template-icon"/>
+                <Label text="Full Inventory" styleClass="template-title"/>
+                <Label text="Complete list of all products" styleClass="template-desc" wrapText="true"/>
+            </VBox>
+            
+            <VBox styleClass="template-card" HBox.hgrow="ALWAYS">
+                <Label text="⚠️" styleClass="template-icon"/>
+                <Label text="Low Stock Alert" styleClass="template-title"/>
+                <Label text="Products below threshold" styleClass="template-desc" wrapText="true"/>
+            </VBox>
+            
+            <VBox styleClass="template-card" HBox.hgrow="ALWAYS">
+                <Label text="⏰" styleClass="template-icon"/>
+                <Label text="Expiring Products" styleClass="template-title"/>
+                <Label text="Items expiring within 30 days" styleClass="template-desc" wrapText="true"/>
+            </VBox>
+            
+            <VBox styleClass="template-card" HBox.hgrow="ALWAYS">
+                <Label text="📊" styleClass="template-icon"/>
+                <Label text="Category Summary" styleClass="template-title"/>
+                <Label text="Products grouped by category" styleClass="template-desc" wrapText="true"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</VBox>

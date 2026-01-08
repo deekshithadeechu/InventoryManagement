@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.inventory.controller.AlertsController"
+      spacing="20" styleClass="page-content">
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <VBox>
+            <Label text="Alerts" styleClass="page-title"/>
+            <Label text="Stock alerts and expiry notifications" styleClass="page-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="refreshButton" text="🔄 Refresh" onAction="#handleRefresh"
+                styleClass="secondary-button"/>
+    </HBox>
+    
+    <!-- Alert Summary -->
+    <HBox spacing="20">
+        <VBox styleClass="alert-summary-card, critical" HBox.hgrow="ALWAYS">
+            <Label text="🚨" styleClass="summary-icon"/>
+            <Label fx:id="criticalCountLabel" text="0" styleClass="summary-value"/>
+            <Label text="Critical Alerts" styleClass="summary-label"/>
+        </VBox>
+        
+        <VBox styleClass="alert-summary-card, warning" HBox.hgrow="ALWAYS">
+            <Label text="⚠️" styleClass="summary-icon"/>
+            <Label fx:id="warningCountLabel" text="0" styleClass="summary-value"/>
+            <Label text="Warnings" styleClass="summary-label"/>
+        </VBox>
+        
+        <VBox styleClass="alert-summary-card" HBox.hgrow="ALWAYS">
+            <Label text="📋" styleClass="summary-icon"/>
+            <Label fx:id="totalCountLabel" text="0" styleClass="summary-value"/>
+            <Label text="Total Alerts" styleClass="summary-label"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Filter -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Label text="Filter:" styleClass="input-label"/>
+        <ComboBox fx:id="filterCombo" prefWidth="200"/>
+    </HBox>
+    
+    <!-- Alerts List -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="alerts-scroll">
+        <VBox fx:id="alertsContainer" spacing="10">
+            <padding>
+                <Insets right="10"/>
+            </padding>
+        </VBox>
+    </ScrollPane>
+</VBox>

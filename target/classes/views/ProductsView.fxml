@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.inventory.controller.ProductController"
+      spacing="20" styleClass="page-content">
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <VBox>
+            <Label text="Products" styleClass="page-title"/>
+            <Label text="Manage your inventory products" styleClass="page-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="addButton" text="➕ Add Product" onAction="#handleAddProduct" 
+                styleClass="primary-button"/>
+        <Button fx:id="refreshButton" text="🔄 Refresh" onAction="#handleRefresh"
+                styleClass="secondary-button"/>
+    </HBox>
+    
+    <!-- Filters -->
+    <HBox spacing="15" styleClass="filter-bar">
+        <TextField fx:id="searchField" promptText="🔍 Search products..." 
+                   styleClass="search-field" prefWidth="300"/>
+        <ComboBox fx:id="categoryFilter" promptText="Category" prefWidth="150"/>
+        <ComboBox fx:id="supplierFilter" promptText="Supplier" prefWidth="150"/>
+        <ComboBox fx:id="statusFilter" prefWidth="130"/>
+        <Button text="Clear Filters" onAction="#handleClearFilters" styleClass="link-button"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="totalLabel" text="Showing 0 products" styleClass="info-label"/>
+    </HBox>
+    
+    <!-- Products Table -->
+    <TableView fx:id="productsTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+        <columns>
+            <TableColumn fx:id="skuColumn" text="SKU" prefWidth="100"/>
+            <TableColumn fx:id="nameColumn" text="Product Name" prefWidth="200"/>
+            <TableColumn fx:id="categoryColumn" text="Category" prefWidth="120"/>
+            <TableColumn fx:id="supplierColumn" text="Supplier" prefWidth="150"/>
+            <TableColumn fx:id="quantityColumn" text="Qty" prefWidth="80"/>
+            <TableColumn fx:id="priceColumn" text="Price" prefWidth="100"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="120"/>
+            <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="150"/>
+        </columns>
+        <placeholder>
+            <Label text="No products found. Add your first product!" styleClass="table-placeholder"/>
+        </placeholder>
+    </TableView>
+</VBox>
