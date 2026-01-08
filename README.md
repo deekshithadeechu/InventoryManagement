@@ -268,4 +268,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ using Java, JavaFX, and MySQL**
+**Built using Java, JavaFX, and MySQL**
