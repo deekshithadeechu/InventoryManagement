@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.inventory.controller.DashboardController"
+            fitToWidth="true" styleClass="content-scroll">
+    
+    <VBox spacing="25" styleClass="dashboard-content">
+        <padding>
+            <Insets top="10"/>
+        </padding>
+        
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <VBox>
+                <Label text="Dashboard" styleClass="page-title"/>
+                <Label text="Welcome back! Here's your inventory overview." styleClass="page-subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="🔄 Refresh" onAction="#handleRefresh" styleClass="secondary-button"/>
+        </HBox>
+        
+        <!-- Statistics Cards -->
+        <HBox spacing="20" fx:id="statsContainer">
+            <!-- Total Products -->
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="📦" styleClass="stat-icon"/>
+                <Label fx:id="totalProductsLabel" text="0" styleClass="stat-value"/>
+                <Label text="Total Products" styleClass="stat-label"/>
+            </VBox>
+            
+            <!-- Total Items -->
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="📊" styleClass="stat-icon"/>
+                <Label fx:id="totalItemsLabel" text="0" styleClass="stat-value"/>
+                <Label text="Total Items in Stock" styleClass="stat-label"/>
+            </VBox>
+            
+            <!-- Low Stock -->
+            <VBox styleClass="stat-card stat-warning" HBox.hgrow="ALWAYS">
+                <Label text="⚠️" styleClass="stat-icon"/>
+                <Label fx:id="lowStockLabel" text="0" styleClass="stat-value"/>
+                <Label text="Low Stock Items" styleClass="stat-label"/>
+            </VBox>
+            
+            <!-- Expiring Soon -->
+            <VBox styleClass="stat-card stat-danger" HBox.hgrow="ALWAYS">
+                <Label text="⏰" styleClass="stat-icon"/>
+                <Label fx:id="expiringSoonLabel" text="0" styleClass="stat-value"/>
+                <Label text="Expiring Soon" styleClass="stat-label"/>
+            </VBox>
+            
+            <!-- Inventory Value -->
+            <VBox styleClass="stat-card stat-success" HBox.hgrow="ALWAYS">
+                <Label text="💰" styleClass="stat-icon"/>
+                <Label fx:id="inventoryValueLabel" text="0" styleClass="stat-value"/>
+                <Label text="Inventory Value" styleClass="stat-label"/>
+            </VBox>
+            
+            <!-- Today's Activity -->
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="📝" styleClass="stat-icon"/>
+                <Label fx:id="todayActivityLabel" text="0" styleClass="stat-value"/>
+                <Label text="Today's Activities" styleClass="stat-label"/>
+            </VBox>
+        </HBox>
+        
+        <!-- Charts Row -->
+        <HBox spacing="20">
+            <!-- Category Distribution Chart -->
+            <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS">
+                <Label text="Products by Category" styleClass="card-title"/>
+                <PieChart fx:id="categoryChart" prefHeight="300" legendSide="BOTTOM"/>
+            </VBox>
+            
+            <!-- Stock Levels Chart -->
+            <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS">
+                <Label text="Stock Levels" styleClass="card-title"/>
+                <BarChart fx:id="stockChart" prefHeight="300">
+                    <xAxis>
+                        <CategoryAxis fx:id="stockChartXAxis" label="Products"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="stockChartYAxis" label="Quantity"/>
+                    </yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+        
+        <!-- Lists Row -->
+        <HBox spacing="20">
+            <!-- Low Stock Items -->
+            <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="⚠️ Low Stock Items" styleClass="card-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Hyperlink text="View All" styleClass="card-link"/>
+                </HBox>
+                <VBox fx:id="lowStockList" spacing="8" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets top="10"/>
+                    </padding>
+                </VBox>
+            </VBox>
+            
+            <!-- Expiring Soon -->
+            <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="⏰ Expiring Soon" styleClass="card-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Hyperlink text="View All" styleClass="card-link"/>
+                </HBox>
+                <VBox fx:id="expiringList" spacing="8" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets top="10"/>
+                    </padding>
+                </VBox>
+            </VBox>
+            
+            <!-- Recent Activity -->
+            <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="📝 Recent Activity" styleClass="card-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Hyperlink text="View All" styleClass="card-link"/>
+                </HBox>
+                <VBox fx:id="recentActivityList" spacing="8" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets top="10"/>
+                    </padding>
+                </VBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>

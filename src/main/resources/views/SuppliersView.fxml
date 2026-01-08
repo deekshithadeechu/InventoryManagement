@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20" styleClass="page-content">
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <VBox>
+            <Label text="Suppliers" styleClass="page-title"/>
+            <Label text="Manage your suppliers" styleClass="page-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="➕ Add Supplier" styleClass="primary-button"/>
+    </HBox>
+    
+    <!-- Suppliers Grid -->
+    <Label text="Suppliers feature - Coming soon!" styleClass="coming-soon"/>
+</VBox>

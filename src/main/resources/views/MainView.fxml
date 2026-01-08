@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.inventory.controller.MainController"
+            styleClass="main-container">
+    
+    <!-- Sidebar -->
+    <left>
+        <VBox fx:id="sidebar" styleClass="sidebar" prefWidth="260">
+            <padding>
+                <Insets top="20" right="0" bottom="20" left="0"/>
+            </padding>
+            
+            <!-- Brand -->
+            <HBox alignment="CENTER_LEFT" styleClass="sidebar-brand" spacing="10">
+                <padding>
+                    <Insets left="20" right="20"/>
+                </padding>
+                <Label text="📦" styleClass="brand-logo"/>
+                <VBox>
+                    <Label text="Inventory" styleClass="brand-title"/>
+                    <Label text="Management System" styleClass="brand-subtitle"/>
+                </VBox>
+            </HBox>
+            
+            <!-- User Info -->
+            <VBox styleClass="user-info" alignment="CENTER">
+                <padding>
+                    <Insets top="20" bottom="20" left="20" right="20"/>
+                </padding>
+                <Label text="👤" styleClass="user-avatar"/>
+                <Label fx:id="userNameLabel" text="Admin User" styleClass="user-name"/>
+                <Label fx:id="userRoleLabel" text="Administrator" styleClass="user-role"/>
+            </VBox>
+            
+            <!-- Navigation -->
+            <VBox styleClass="nav-section" spacing="4" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets top="10" right="15" left="15"/>
+                </padding>
+                
+                <Label text="MAIN MENU" styleClass="nav-section-title"/>
+                
+                <Button fx:id="dashboardBtn" text="📊  Dashboard" onAction="#handleDashboard"
+                        styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                
+                <Button fx:id="productsBtn" text="📦  Products" onAction="#handleProducts"
+                        styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                
+                <Button fx:id="categoriesBtn" text="🏷️  Categories" onAction="#handleCategories"
+                        styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                
+                <Button fx:id="suppliersBtn" text="🏭  Suppliers" onAction="#handleSuppliers"
+                        styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                
+                <Label text="REPORTS &amp; ALERTS" styleClass="nav-section-title">
+                    <VBox.margin>
+                        <Insets top="20"/>
+                    </VBox.margin>
+                </Label>
+                
+                <StackPane>
+                    <Button fx:id="alertsBtn" text="🔔  Alerts" onAction="#handleAlerts"
+                            styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                    <Label fx:id="alertBadge" text="5" styleClass="alert-badge"
+                           StackPane.alignment="CENTER_RIGHT">
+                        <StackPane.margin>
+                            <Insets right="15"/>
+                        </StackPane.margin>
+                    </Label>
+                </StackPane>
+                
+                <Button fx:id="reportsBtn" text="📋  Reports" onAction="#handleReports"
+                        styleClass="nav-button" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                
+                <!-- Spacer -->
+                <Region VBox.vgrow="ALWAYS"/>
+                
+                <!-- Bottom section -->
+                <Separator/>
+                
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <padding>
+                        <Insets top="10"/>
+                    </padding>
+                    <Label text="Dark Mode" styleClass="input-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <ToggleButton fx:id="darkModeToggle" text="🌙" styleClass="toggle-button"/>
+                </HBox>
+                
+                <Button fx:id="logoutBtn" text="🚪  Logout" onAction="#handleLogout"
+                        styleClass="nav-button, logout-button" maxWidth="Infinity" alignment="CENTER_LEFT">
+                    <VBox.margin>
+                        <Insets top="10"/>
+                    </VBox.margin>
+                </Button>
+            </VBox>
+        </VBox>
+    </left>
+    
+    <!-- Main Content Area -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+        </StackPane>
+    </center>
+</BorderPane>

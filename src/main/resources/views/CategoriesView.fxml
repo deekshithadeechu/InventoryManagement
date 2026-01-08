@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20" styleClass="page-content">
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <VBox>
+            <Label text="Categories" styleClass="page-title"/>
+            <Label text="Manage product categories" styleClass="page-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="➕ Add Category" styleClass="primary-button"/>
+    </HBox>
+    
+    <!-- Categories Grid -->
+    <Label text="Categories feature - Coming soon!" styleClass="coming-soon"/>
+</VBox>
